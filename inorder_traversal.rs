@@ -6,6 +6,12 @@ struct TreeNode<'a> {
   right: Option<&'a TreeNode<'a>>,
 }
 
+impl<'a> TreeNode<'a> {
+  fn new(val: i32) -> TreeNode<'a> {
+    TreeNode { val: val, left: None, right: None }
+  }
+}
+
 fn inorder_traversal<'a>(root: Option<&'a TreeNode<'a>>) {
   match root {
     None => (),
@@ -18,16 +24,8 @@ fn inorder_traversal<'a>(root: Option<&'a TreeNode<'a>>) {
 }
 
 fn main() {
-  let a = TreeNode {
-    val: 1,
-    left: None,
-    right: None,
-  };
-  let b = TreeNode {
-    val: 3,
-    left: None,
-    right: None,
-  };
+  let a = TreeNode::new(1);
+  let b = TreeNode::new(3);
   let t = TreeNode {
     val: 2,
     left: Some(&a),
